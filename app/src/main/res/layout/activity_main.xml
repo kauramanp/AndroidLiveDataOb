@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnRed"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/margin_10dp"
+            android:backgroundTint="@android:color/holo_red_dark"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnGreen"
+            android:layout_margin="@dimen/margin_10dp"
+            android:layout_weight="1"
+            android:backgroundTint="@android:color/holo_green_dark"/>
+        <Button
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnBlue"
+            android:layout_margin="@dimen/margin_10dp"
+            android:backgroundTint="@android:color/holo_blue_dark"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:weightSum="2"
+        android:layout_height="wrap_content">
+        <androidx.fragment.app.FragmentContainerView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/fragmentOne"
+            android:name="com.aman.androidlivedataob.OneFragment"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/margin_10dp"/>
+        <androidx.fragment.app.FragmentContainerView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/fragmentTwo"
+            android:name="com.aman.androidlivedataob.SecondFragment"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/margin_10dp"/>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
