@@ -7,40 +7,23 @@ import com.aman.androidlivedataob.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
-    lateinit var activityInterface: ActivityInterface
-    lateinit var activitySecondInterface: ActivitySecondInterface
     lateinit var liveDataViewModel: LiveDataViewModel
     var color = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        liveDataViewModel = ViewModelProvider(this)[liveDataViewModel::class.java]
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        liveDataViewModel = ViewModelProvider(this)[LiveDataViewModel::class.java]
 
         binding.btnBlue.setOnClickListener {
             liveDataViewModel.color.setValue(1)
-
-            System.out.print("on click")
-            color = 1
-            activityInterface.activityOneInterface(1)
-            activitySecondInterface.activitySecondInterface(1)
         }
         binding.btnGreen.setOnClickListener {
-            color = 2
-            activityInterface.activityOneInterface(color)
-            activitySecondInterface.activitySecondInterface(color)
+            liveDataViewModel.color.setValue(2)
         }
         binding.btnRed.setOnClickListener {
-            color = 3
-            activityInterface.activityOneInterface(color)
-            activitySecondInterface.activitySecondInterface(color)
+            liveDataViewModel.color.setValue(3)
         }
-
-    }
-
-    fun changeOtherColor(){
-        activitySecondInterface.activitySecondInterface(4)
     }
 }

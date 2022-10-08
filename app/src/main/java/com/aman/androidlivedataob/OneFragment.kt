@@ -21,13 +21,12 @@ private const val ARG_PARAM2 = "param2"
  * Use the [OneFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class OneFragment : Fragment(), ActivityInterface {
+class OneFragment : Fragment(){
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
     lateinit var binding: FragmentOneBinding
     lateinit var mainActivity: MainActivity
-    lateinit var liveDataViewModel: LiveDataViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,17 +43,16 @@ class OneFragment : Fragment(), ActivityInterface {
         // Inflate the layout for this fragment
         binding = FragmentOneBinding.inflate(layoutInflater)
         mainActivity = activity as MainActivity
-        mainActivity.activityInterface = this
-        liveDataViewModel = ViewModelProvider(mainActivity)[liveDataViewModel::class.java]
-
-        var observer =  Observer<Int>{
-            activityOneInterface(it)
-
-        }
-        liveDataViewModel.color.observe(mainActivity,observer)
+       mainActivity.liveDataViewModel.color.observe(mainActivity, Observer<Int>{
+           when(it){
+               1-> binding.llBackground.setBackgroundColor(ContextCompat.getColor(mainActivity, android.R.color.holo_red_dark))
+               2-> binding.llBackground.setBackgroundColor(ContextCompat.getColor(mainActivity, android.R.color.holo_green_dark))
+               3-> binding.llBackground.setBackgroundColor(ContextCompat.getColor(mainActivity, android.R.color.holo_blue_dark))
+           }
+        })
 
         binding.btnChangeColor.setOnClickListener {
-            mainActivity.changeOtherColor()
+           mainActivity.liveDataViewModel.color.value = 4
         }
         return binding.root
     }
@@ -77,14 +75,5 @@ class OneFragment : Fragment(), ActivityInterface {
                     putString(ARG_PARAM2, param2)
                 }
             }
-    }
-
-    override fun activityOneInterface(value: Int) {
-        System.out.print(" in interaction one");
-       /* when(value){
-            1-> binding.llBackground.setBackgroundColor(ContextCompat.getColor(mainActivity, android.R.color.holo_red_dark))
-            2-> binding.llBackground.setBackgroundColor(ContextCompat.getColor(mainActivity, android.R.color.holo_green_dark))
-            3-> binding.llBackground.setBackgroundColor(ContextCompat.getColor(mainActivity, android.R.color.holo_blue_dark))
-        }*/
     }
 }

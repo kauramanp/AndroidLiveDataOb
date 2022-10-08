@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
-import com.aman.androidlivedataob.databinding.FragmentOneBinding
 import com.aman.androidlivedataob.databinding.FragmentSecondBinding
 
 // TODO: Rename parameter arguments, choose names that match
@@ -19,7 +18,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [SecondFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class SecondFragment : Fragment(), ActivitySecondInterface {
+class SecondFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -41,7 +40,34 @@ class SecondFragment : Fragment(), ActivitySecondInterface {
         // Inflate the layout for this fragment
         binding = FragmentSecondBinding.inflate(layoutInflater)
         mainActivity = activity as MainActivity
-        mainActivity.activitySecondInterface = this
+        mainActivity.liveDataViewModel.color.observe(mainActivity) {
+            when (it) {
+                1 -> binding.llBackground.setBackgroundColor(
+                    ContextCompat.getColor(
+                        mainActivity,
+                        android.R.color.holo_green_dark
+                    )
+                )
+                2 -> binding.llBackground.setBackgroundColor(
+                    ContextCompat.getColor(
+                        mainActivity,
+                        android.R.color.holo_blue_dark
+                    )
+                )
+                3 -> binding.llBackground.setBackgroundColor(
+                    ContextCompat.getColor(
+                        mainActivity,
+                        android.R.color.holo_red_dark
+                    )
+                )
+                4 -> binding.llBackground.setBackgroundColor(
+                    ContextCompat.getColor(
+                        mainActivity,
+                        android.R.color.white
+                    )
+                )
+            }
+        }
         return binding.root
     }
 
@@ -63,16 +89,5 @@ class SecondFragment : Fragment(), ActivitySecondInterface {
                     putString(ARG_PARAM2, param2)
                 }
             }
-    }
-
-    override fun activitySecondInterface(value: Int) {
-        System.out.print(" in interaction two")
-
-        when(value){
-            1-> binding.llBackground.setBackgroundColor(ContextCompat.getColor(mainActivity, android.R.color.holo_green_dark))
-            2-> binding.llBackground.setBackgroundColor(ContextCompat.getColor(mainActivity, android.R.color.holo_blue_dark))
-            3-> binding.llBackground.setBackgroundColor(ContextCompat.getColor(mainActivity, android.R.color.holo_red_dark))
-            4-> binding.llBackground.setBackgroundColor(ContextCompat.getColor(mainActivity, android.R.color.white))
-        }
     }
 }
