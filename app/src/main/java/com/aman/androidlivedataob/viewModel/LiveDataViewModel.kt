@@ -1,4 +1,4 @@
-package com.aman.androidlivedataob
+package com.aman.androidlivedataob.viewModel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

@@ -1,4 +1,4 @@
-package com.aman.androidlivedataob
+package com.aman.androidlivedataob.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.aman.androidlivedataob.databinding.FragmentOneBinding
+import com.aman.androidlivedataob.ui.activities.MainActivity
 
 
 // TODO: Rename parameter arguments, choose names that match

@@ -1,9 +1,10 @@
-package com.aman.androidlivedataob
+package com.aman.androidlivedataob.ui.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import com.aman.androidlivedataob.databinding.ActivityMainBinding
+import com.aman.androidlivedataob.viewModel.LiveDataViewModel
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding

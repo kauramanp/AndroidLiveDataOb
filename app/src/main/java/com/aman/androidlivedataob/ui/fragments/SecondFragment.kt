@@ -1,4 +1,4 @@
-package com.aman.androidlivedataob
+package com.aman.androidlivedataob.ui.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import com.aman.androidlivedataob.databinding.FragmentSecondBinding
+import com.aman.androidlivedataob.ui.activities.MainActivity
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
